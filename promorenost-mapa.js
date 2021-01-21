@@ -20,9 +20,9 @@ const scl = d3.scaleLinear(d3.interpolatePiYG)
 
 ok.forEach((okres) => {
     L.polygon(okres[2], {
-        color: 'lightgray',
-        weight: 1,
-        fillColor: d3.interpolateRdYlBu(scl(okres[1])),
+        color: 'white',
+        weight: .5,
+        fillColor: d3.interpolateOrRd(scl(okres[1])),
         fillOpacity: 0.9,
     }).addTo(mista).bindPopup(`<b>Okres ${okres[0]}</b><br>V posledních 3 měsících nakažených ${(okres[1] * 1000)/10} % obyvatel`)
 })
@@ -30,9 +30,9 @@ ok.forEach((okres) => {
 ob.forEach((obec) => {
     L.circleMarker(obec[2], {
         radius: 6,
-        color: 'lightgray',
-        weight: 1,
-        fillColor: d3.interpolateRdYlBu(scl(obec[1])),
+        color: 'white',
+        weight: .5,
+        fillColor: d3.interpolateOrRd(scl(obec[1])),
         fillOpacity: 1,
     }).addTo(mista).bindPopup(`<b>Obec ${obec[0]}</b><br>V posledních 3 měsících nakažených ${(obec[1] * 1000)/10} % obyvatel`)
 })
