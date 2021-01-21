@@ -14,7 +14,7 @@ vals = vals.concat(ob.map(v => v[1]))
 
 const scl = d3.scaleLinear(d3.interpolatePiYG)
     .domain([Math.min(...vals), Math.max(...vals)])
-    .range([1, 0]) 
+    .range([0, 1]) 
 
     const mista = L.featureGroup();
 
