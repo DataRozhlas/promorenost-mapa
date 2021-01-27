@@ -2,8 +2,8 @@
 import pandas as pd
 import json
 # %%
-ok = pd.read_excel('./analyza.xlsx', sheet_name='výsledky')
-ob = pd.read_excel('./analyza.xlsx', sheet_name='výsledky obce')
+ok = pd.read_excel('./analyza.xlsx', sheet_name='okresy')
+ob = pd.read_excel('./analyza.xlsx', sheet_name='obce')
 
 # %%
 ob = ob[ob.obyvatel >= 10000]
@@ -38,7 +38,7 @@ ob_out = list(map(prep, ob_jsn['features']))
 # napojeni dat okresu
 for okres in ok.values:
     ftr = list(filter(lambda x: x['properties']['NAZ_LAU1'].rstrip() == str(okres[0]), ok_jsn['features']))[0]
-    ftr['properties']['podil'] = round(okres[2], 3)
+    ftr['properties']['podil'] = round(okres[3] /100, 3)
 
 # %%
 ok_out = list(map(prep, ok_jsn['features']))
@@ -57,3 +57,9 @@ with open('../data.js', 'w', encoding='utf-8') as f:
     f.write('const ok = ' + json.dumps(ok_out, ensure_ascii=False) + ';\n'
         + 'const ob = ' + json.dumps(ob_out, ensure_ascii=False) + ';'
     )
+
+# %%
+ok_out
+# %%
+
+# %%
